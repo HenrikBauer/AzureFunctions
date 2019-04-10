@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var message = ViewData["message"];
+    var messageType = ViewData["messageType"];
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Diese Demo....</p>
+</div>
+
+<div class="text-center">
+    <h2>Bild bereitstellen:</h2>
+
+    <form method="post" action="UploadFile" enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="col-md-4">
+                <input type="file" name="files" value="Bild auswählen" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <input type="submit" value="Bild hochladen" />
+            </div>
+        </div>
+    </form>
+
+    @if (message != null)
+    {
+        <div class="alert alert alert-@messageType" role="alert">
+            @message
+        </div>
+    }
+</div>

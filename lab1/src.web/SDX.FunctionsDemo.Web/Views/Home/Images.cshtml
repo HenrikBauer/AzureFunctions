@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Bildinformation";
+    var fileName = ViewData["fileName"];
+    var images = (Tuple<string, string>
+    [])ViewData["images"];
+
+    var needsRefresh = images.Where(image => image.Item2 == null).Any();
+    if (needsRefresh)
+    {
+        ViewData["refresh"] = 2;
+    }
+
+    // Images embedded: <img alt="..." src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIA..." />
+}
+
+<div class="text-center">
+    <h2>Das Bild wurde verarbeitet.</h2>
+    <div class="alert alert alert-success" role="alert">
+        Die Datei @fileName wurde verarbeitet.
+    </div>
+</div>
+
+<div class="text-center">
+    @foreach (var image in images.OrderBy(image => image.Item1))
+    {
+        if (image.Item1 != SDX.FunctionsDemo.ImageProcessing.ImageUtils.ImageTypeOriginal)
+        {
+            <div>
+                <span>@image.Item1</span>
+                @if (image.Item2 != null)
+                {
+                    <img alt="@image.Item1" title="@image.Item1" src="@image.Item2" />
+                }
+                else
+                {
+                    <form method="get">
+                        <button type="submit">neu laden</button>
+                    </form>
+                }
+            </div>
+            <br />
+        }
+    }
+</div>
