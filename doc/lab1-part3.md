@@ -1,6 +1,6 @@
 # Azure Functions Lab 
 
-##Inhaltsverzeichnis
+## Inhaltsverzeichnis
 * [Lab-Übersicht](lab1.md)
 	* [Installation](lab1-installation.md)
 	* [Lab Part 1: Code bereitstellen](lab1-part1.md)
