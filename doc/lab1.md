@@ -1,36 +1,28 @@
 # Azure Functions Lab 
 
-[![af.png](images/af.png)](app1.png)
+![af.png](images/af.png)
 
 Dieses Lab soll den ersten Einstieg in Azure Functions bieten.
+
+
 
 ### Motivation
 Die Dokumentation von Microsoft bietet einen Einstige in Azure Functions auf rein technischer Ebene. In diesem Lab wurde Wert darauf gelegt, dass der Einsatz im Rahmen eines wenn auch vereinfachten, aber doch nachvollziehbaren Use Cases stattfindet.
 
 In einer Web-Anwendung können Bilder hochgeladen werden, die dann auf verschiedene Arten aufbereitet werden (unterschiedliche Größen, Filtereffekte, runder Ausschnitt):
 
-[![app2.png](images/app2.png)](app1.png)
+[![app2.png](images/app2.png)](images/app1.png)
 
 Die Verarbeitung der Bilder dauert entsprechend lange und soll deshalb in eine Azure Function verlagert werden.
 
-
-### Lerninhalte
-
-Das Lab setzt folgende Technologien ein:
-* .NET Core und dotnet cli
-* Azure Functions lokal und in Azure 
-* Visual Studio Code (VSCode)
-
-
-### Hinweise:
-
-* Das Lab verwendet Visual Studio Code (VSCode) um auf Code-Ebene plattformunabhägig zu sein. 
-* Das Lab wurde unter Windows entwickelt und gestestet; für Unterschiede bei Installation oder Kommandozeilensyntax wird auf die einschlägige Dokumentation verwiesen. 
+>Hinweis: Um den Effekt deutlich zu machen, wurde die Berechnung künstlich verlängert.
 
 
 ## Voraussetzungen
 
-Es wird ein Azure-Konto benötigt. Fall kein Konto verfügbat ist, kann ein kostenloses Azure-Konto angelegt werden: https://azure.microsoft.com/de-de/free/
+Kenntnisse von C# werden vorausgesetzt. Kenntnisse von ASP.NET MVC sind von Vorteil. 
+
+Es wird ein Azure-Konto benötigt. Fall kein Konto verfügbar ist, kann ein kostenloses Azure-Konto angelegt werden: https://azure.microsoft.com/de-de/free/
 
 Notwendigkeit eines Azure-Kontos:
 
@@ -39,7 +31,8 @@ Notwendigkeit eines Azure-Kontos:
 	>Mögliche Alternative (nicht getestet): https://github.com/azure/azurite
 
 
-## Lab-Aufbau und Inhalte
+
+## Lab-Inhalte
 
 * [Installation](lab1-installation.md): Hinweise zur notwendigen Installation
 * [Lab Part 1: Code bereitstellen](lab1-part1.md): Im ersten Teil wird der Lab-Code bereitgestellt, die Testanwendung zum Laufen gebracht und der Code analysiert.
