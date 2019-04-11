@@ -1,23 +1,20 @@
 ﻿@{
     ViewData["Title"] = "Bildinformation";
-    var fileName = ViewData["fileName"];
-    var images = (Tuple<string, string>
-    [])ViewData["images"];
-
-    var needsRefresh = images.Where(image => image.Item2 == null).Any();
-    if (needsRefresh)
-    {
-        ViewData["refresh"] = 2;
-    }
+    var images = (Tuple<string, string>[])ViewData["images"];
+    var message = ViewData["message"];
+    var messageType = ViewData["messageType"];
 
     // Images embedded: <img alt="..." src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIA..." />
 }
 
 <div class="text-center">
     <h2>Das Bild wurde verarbeitet.</h2>
-    <div class="alert alert alert-success" role="alert">
-        Die Datei @fileName wurde verarbeitet.
-    </div>
+    @if (message != null)
+    {
+        <div class="alert alert alert-@messageType" role="alert">
+            @message
+        </div>
+    }
 </div>
 
 <div class="text-center">

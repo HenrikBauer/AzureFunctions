@@ -1,5 +1,7 @@
 # Azure Functions Lab 
 
+[![af.png](images/af.png)](app1.png)
+
 Dieses Lab soll den ersten Einstieg in Azure Functions bieten.
 
 ### Motivation
@@ -7,7 +9,7 @@ Die Dokumentation von Microsoft bietet einen Einstige in Azure Functions auf rei
 
 In einer Web-Anwendung können Bilder hochgeladen werden, die dann auf verschiedene Arten aufbereitet werden (unterschiedliche Größen, Filtereffekte, runder Ausschnitt):
 
-[![app2.png](app2.png)](app1.png)
+[![app2.png](images/app2.png)](app1.png)
 
 Die Verarbeitung der Bilder dauert entsprechend lange und soll deshalb in eine Azure Function verlagert werden.
 
@@ -48,9 +50,12 @@ Notwendigkeit eines Azure-Kontos:
 
 
 # Links
-https://azure.microsoft.com/de-de/services/functions/
-https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-function-vs-code
+* SDX AG
+	* https://www.sdx-ag.de
+	* https://www.sdx-ag.de/?s=azure+functions
+	* https://www.sdx-ag.de/2019/03/azure-functions-eine-kurze-einfhrung/##news_content
+* Microsoft
+	* https://azure.microsoft.com/de-de/services/functions/
+	* https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-function-vs-code
 
 
-TODO:
-"Chrome"

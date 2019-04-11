@@ -1,5 +1,12 @@
 # Azure Functions Lab 
 
+* [Installation](lab1-installation.md): Hinweise zur notwendigen Installation
+* [Lab Part 1: Code bereitstellen](lab1-part1.md): Im ersten Teil wird der Lab-Code bereitgestellt, die Testanwendung zum Laufen gebracht und der Code analysiert.
+* [Lab Part 2: Azure Functions einführen](lab1-part2.md): In diesem Teil wird eine Azure Functions App angelegt und die Berechnungslogik für die Bilder dorthin verlagert. 
+* [Lab Part 3: Azure Functions optimieren](lab1-part3.md): In diesem Teil wird die Verarbeitung durch weitere Functions entkoppelt und parallelisiert.
+* [Lab Part 4: Azure Functions in Azure deployen](lab1-part4.md): Im letzten Teil wird die Function App nach Azure deployt.
+
+
 ## Installation
 
 Hinweis: Das Lab verwendet Visual Studio Code. Weiter unten gibt es Hinweise für Nutzer von Visual Studio 2017/2019.  

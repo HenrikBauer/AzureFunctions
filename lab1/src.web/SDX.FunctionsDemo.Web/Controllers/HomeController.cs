@@ -61,6 +61,17 @@ namespace SDX.FunctionsDemo.Web.Controllers
                     images.Add(image);
             }
 
+            var available = images.Where(image => image.Item2 != null).Count();
+            if (available == images.Count)
+            {
+                this.ViewData.SetMessage("success", "Alle Bilder wurden verarbeitet!");
+            }
+            else
+            {
+                this.ViewData.SetMessage("warning", "Die Verarbeitung ist noch unvollständig: " + available + "/" + images.Count);
+                ViewData["refresh"] = 2;
+            }
+
             this.ViewData.SetImages(fileName, images.ToArray());
             return View();
         }

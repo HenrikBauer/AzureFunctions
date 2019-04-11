@@ -27,7 +27,7 @@ namespace SDX.FunctionsDemo.Web.Services
                 content.Headers.Add("x-sdx-filename", fileName);
                 content.Headers.Add("x-sdx-contentType", contentType);
 
-                var requestUri = _baseUrl + "/UploadImage";
+                var requestUri = _baseUrl + "/api/UploadImage";
                 var response = await _client.PostAsync(requestUri, content);
                 if (!response.IsSuccessStatusCode)
                     return null;
@@ -45,7 +45,7 @@ namespace SDX.FunctionsDemo.Web.Services
         {
             try
             {
-                var requestUri = _baseUrl + $"/GetImage?id={id}&imageType={imageType}";
+                var requestUri = _baseUrl + $"/api/GetImage?id={id}&imageType={imageType}";
                 var response = await _client.GetAsync(requestUri);
                 if (!response.IsSuccessStatusCode)
                     return null;
