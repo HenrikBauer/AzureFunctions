@@ -22,7 +22,7 @@
 
 
 
-###Installation (unter Windows):
+### Installation (unter Windows):
 
 * Visual Studio Code:	
 	* Installer: https://code.visualstudio.com/
@@ -44,7 +44,7 @@
 
 
 
-###Azure Storage Emulator:
+### Azure Storage Emulator:
 
 Für Windows steht der Azure Storage Emulator als Teil des Azure SDK zu Verfügung: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator#get-the-storage-emulator
 
@@ -52,7 +52,7 @@ Unter anderen Betriebsystemen muss in Azure ein Storage Account angelegt werden:
 
 
 
-###Optional:
+### Optional:
 
 * Azure Storage Explorer:	
 	* https://azure.microsoft.com/en-us/features/storage-explorer/
@@ -60,7 +60,7 @@ Unter anderen Betriebsystemen muss in Azure ein Storage Account angelegt werden:
 
 
 
-###Bei Problemen bzw. Installation unter Linux/MacOS:
+### Bei Problemen bzw. Installation unter Linux/MacOS:
 
 Die oben angegebenen Links bieten auch Hinweise zur Installation unter Linux und MacOS.
 
