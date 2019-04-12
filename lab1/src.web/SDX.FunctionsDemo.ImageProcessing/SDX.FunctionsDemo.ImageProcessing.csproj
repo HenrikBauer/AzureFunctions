@@ -5,6 +5,54 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="FakeImages\ajdotnet-100.png" />
+    <None Remove="FakeImages\ajdotnet-200 gray.png" />
+    <None Remove="FakeImages\ajdotnet-200 recolor.png" />
+    <None Remove="FakeImages\ajdotnet-200 round.png" />
+    <None Remove="FakeImages\ajdotnet-200.png" />
+    <None Remove="FakeImages\ajdotnet-400.png" />
+    <None Remove="FakeImages\ajdotnet-500.png" />
+    <None Remove="FakeImages\CreateAppService-100.png" />
+    <None Remove="FakeImages\CreateAppService-200 gray.png" />
+    <None Remove="FakeImages\CreateAppService-200 recolor.png" />
+    <None Remove="FakeImages\CreateAppService-200 round.png" />
+    <None Remove="FakeImages\CreateAppService-200.png" />
+    <None Remove="FakeImages\CreateAppService-400.png" />
+    <None Remove="FakeImages\CreateAppService-500.png" />
+    <None Remove="FakeImages\FF_Alexander_Jung1-100.png" />
+    <None Remove="FakeImages\FF_Alexander_Jung1-200 gray.png" />
+    <None Remove="FakeImages\FF_Alexander_Jung1-200 recolor.png" />
+    <None Remove="FakeImages\FF_Alexander_Jung1-200 round.png" />
+    <None Remove="FakeImages\FF_Alexander_Jung1-200.png" />
+    <None Remove="FakeImages\FF_Alexander_Jung1-400.png" />
+    <None Remove="FakeImages\FF_Alexander_Jung1-500.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="FakeImages\ajdotnet-100.png" />
+    <EmbeddedResource Include="FakeImages\ajdotnet-200 gray.png" />
+    <EmbeddedResource Include="FakeImages\ajdotnet-200 recolor.png" />
+    <EmbeddedResource Include="FakeImages\ajdotnet-200 round.png" />
+    <EmbeddedResource Include="FakeImages\ajdotnet-200.png" />
+    <EmbeddedResource Include="FakeImages\ajdotnet-400.png" />
+    <EmbeddedResource Include="FakeImages\ajdotnet-500.png" />
+    <EmbeddedResource Include="FakeImages\CreateAppService-100.png" />
+    <EmbeddedResource Include="FakeImages\CreateAppService-200 gray.png" />
+    <EmbeddedResource Include="FakeImages\CreateAppService-200 recolor.png" />
+    <EmbeddedResource Include="FakeImages\CreateAppService-200 round.png" />
+    <EmbeddedResource Include="FakeImages\CreateAppService-200.png" />
+    <EmbeddedResource Include="FakeImages\CreateAppService-400.png" />
+    <EmbeddedResource Include="FakeImages\CreateAppService-500.png" />
+    <EmbeddedResource Include="FakeImages\FF_Alexander_Jung1-100.png" />
+    <EmbeddedResource Include="FakeImages\FF_Alexander_Jung1-200 gray.png" />
+    <EmbeddedResource Include="FakeImages\FF_Alexander_Jung1-200 recolor.png" />
+    <EmbeddedResource Include="FakeImages\FF_Alexander_Jung1-200 round.png" />
+    <EmbeddedResource Include="FakeImages\FF_Alexander_Jung1-200.png" />
+    <EmbeddedResource Include="FakeImages\FF_Alexander_Jung1-400.png" />
+    <EmbeddedResource Include="FakeImages\FF_Alexander_Jung1-500.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
     <PackageReference Include="SkiaSharp" Version="1.68.0" />
   </ItemGroup>
