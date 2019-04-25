@@ -12,7 +12,7 @@
 
 ## Lab Part 4: Azure Functions in Azure deployen
 
-Im letzten Teil wird die Function App nach Azure deployt. Die Function App sollte dabei im Azure Portal angelegt werden. 
+In diesem Teil wird die Function App nach Azure deployt. Die Function App sollte dabei im Azure Portal angelegt werden. 
 
 >Zwar bietet auch VSCode an, die Function App zu erstellen, dabei können jedoch bestimmte Dinge nicht vorgegeben werden, z.B. die Region.
 

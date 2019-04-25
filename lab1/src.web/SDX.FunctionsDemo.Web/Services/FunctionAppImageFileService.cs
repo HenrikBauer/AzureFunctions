@@ -11,12 +11,10 @@ namespace SDX.FunctionsDemo.Web.Services
         static HttpClient _client = new HttpClient();
 
         private readonly IConfiguration _configuration;
-        private readonly string _baseUrl;
 
         public FunctionAppImageFileService(IConfiguration configuration)
         {
             _configuration = configuration;
-            _baseUrl = configuration["Settings:FunctionApp.Url"];
         }
 
         async Task<string> IImageFileService.UploadImageAsync(string fileName, string contentType, byte[] data)
@@ -27,7 +25,8 @@ namespace SDX.FunctionsDemo.Web.Services
                 content.Headers.Add("x-sdx-fileName", fileName);
                 content.Headers.Add("x-sdx-contentType", contentType);
 
-                var requestUri = _baseUrl + "/api/UploadImage";
+                var baseUrl = _configuration["Settings:FunctionApp.Url"];
+                var requestUri = baseUrl + "/api/UploadImage";
                 var response = await _client.PostAsync(requestUri, content);
                 if (!response.IsSuccessStatusCode)
                     return null;
@@ -45,7 +44,8 @@ namespace SDX.FunctionsDemo.Web.Services
         {
             try
             {
-                var requestUri = _baseUrl + $"/api/GetImage?id={id}&imageType={imageType}";
+                var baseUrl = _configuration["Settings:FunctionApp.Url"];
+                var requestUri = baseUrl + $"/api/GetImage?id={id}&imageType={imageType}";
                 var response = await _client.GetAsync(requestUri);
                 if (!response.IsSuccessStatusCode)
                     return null;
