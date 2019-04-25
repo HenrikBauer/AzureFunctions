@@ -12,17 +12,9 @@
 
 ## Installation
 
+Das Lab verwendet Visual Studio Code (VSCode) um auf Code-Ebene plattformunabhägig zu sein. Nutzer von Visual Studio Code finden unten zusätzliche Hinweise.
 
-### Hinweise:
-
-* Das Lab verwendet Visual Studio Code (VSCode) um auf Code-Ebene plattformunabhägig zu sein.
-	* Die Nutzung von Visual Studio 2017/2019 ist ebenfalls möglich und sollte wenig Probleme bereiten. Notwendige Informationen zur Installation finden sich hier: https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-your-first-function-visual-studio
-* Das Lab wurde unter Windows entwickelt und gestestet; für Unterschiede bei Installation oder Kommandozeilensyntax wird auf die einschlägige Dokumentation verwiesen. 
-
-
-
-
-### Installation (unter Windows):
+### Installation:
 
 * Visual Studio Code:	
 	* Installer: https://code.visualstudio.com/
@@ -31,18 +23,13 @@
 	* Azure Functions for Visual Studio Code: 
 		* https://marketplace.visualstudio.com/itemdetails?itemName=ms-azuretools.vscode-azurefunctions 
 		* vscode:extension/ms-azuretools.vscode-azurefunctions
-* .NET Core 2.2 SDK:	
-	* Installer: https://dotnet.microsoft.com/download
-* Node.js:				
-	* https://docs.npmjs.com/downloading-and-installing-node-js-and-npm 
-	* Installer: https://nodejs.org/en/download/
-*  Azure Functions Core Tools:	
-	*  ``npm install -g azure-functions-core-tools``
-	*  Weitere Optionen/Betriebssysteme: https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows
+* Azure Functions Core Tools (inkl. .NET Core SDK, node.js)
+	* https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local#v2
 * GIT: 
 	* Installer: https://git-scm.com/downloads
 
 
+Bei Problemen sollte die Dokumentation weiterhelfen können: https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-function-vs-code#prerequisites
 
 ### Azure Storage Emulator:
 
@@ -50,11 +37,13 @@ Für Windows steht der Azure Storage Emulator als Teil des Azure SDK zu Verfügu
 
 Unter anderen Betriebsystemen muss in Azure ein Storage Account angelegt werden: https://azure.microsoft.com/de-de/services/storage/
 
->Alternativ gibt es eine Open Source-Variante:
+> Alternativ gibt es eine Open Source-Variante:
 >
 >>A lightweight server clone of Azure Storage that simulates most of the commands supported by it with minimal dependencies
 >
->https://github.com/azure/azurite
+> https://github.com/azure/azurite
+>
+> Getestet unter Ubuntu 18.04, unter MacOS mit Problemen.
 
 
 ### Optional:
@@ -63,12 +52,5 @@ Unter anderen Betriebsystemen muss in Azure ein Storage Account angelegt werden:
 	* https://azure.microsoft.com/en-us/features/storage-explorer/
 * Postman, curl, oder vergleichbar.
 
-
-
-### Bei Problemen bzw. Installation unter Linux/MacOS:
-
-Die oben angegebenen Links bieten auch Hinweise zur Installation unter Linux und MacOS.
-
-Bei Problemen sollte die Dokumentation weiterhelfen können: https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-function-vs-code#prerequisites
-
-
+### Visual Studio 2017/2019-Nutzer
+Die Nutzung von Visual Studio 2017/2019 ist ebenfalls möglich und sollte wenig Probleme bereiten. Notwendige Informationen zur Installation finden sich hier: https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-your-first-function-visual-studio

@@ -18,8 +18,8 @@ Im ersten Teil wird der Lab-Code bereitgestellt, die Testanwendung zum Laufen ge
 ### Schritt 1: GIT Clone
 Bereitstellen der Sourcen:
 
-	cd \
-	md sdxlab
+	cd /
+	mkdir sdxlab
 	cd sdxlab
 	git clone https://github.com/SDXag/AzureFunctions
 
@@ -30,11 +30,11 @@ Bereitstellen der Sourcen:
 Testanwendung bauen und starten:
 >Da die Konsole danach blockiert ist, wird empfohlen, eine separate Konsole zu starten.
 
-	cd AzureFunctions\lab1\src.web\SDX.FunctionsDemo.Web
+	cd AzureFunctions/lab1/src.web/SDX.FunctionsDemo.Web
 	dotnet build
 	dotnet run
 
-Testanwendung verwenden, z.B. in Chrome:
+Testanwendung verwenden, z.B. in Chrome unter Windows:
 
 	"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" https://localhost:5001
 
@@ -46,21 +46,17 @@ Testanwendung verwenden, z.B. in Chrome:
 	* *Hinweis: Um das Problem deutlich zu machen wurde die Verarbeitung künstlich verlängert!*
 3. Auf der Ergebnisseite werden die berechneten Bilder angezeigt.
 
-> Achtung! Es gibt unter MacOS einen offenen Bug mit SkiaSahrp (plattformunabhängige Grafik-Library).
->
-> Symptom: Fehlermeldung `SkiaSharp: Unable to load shared library 'libSkiaSharp' or one of its dependencies.` oder vergleichbar 
->
-> Workaround: Aufrufe an `ImageUtils.ProcessImage` durch `ImageUtilsFake.ProcessImage` ersetzen. Damit werden die Bilder nicht berechnet, sondern vorberechnete Bilder ausgeliefert.  
-
 
 Quellcode analysieren:
 
-	cd \sdxlab\AzureFunctions\lab1\src.web\SDX.FunctionsDemo.Web
+	cd /sdxlab/AzureFunctions/lab1/src.web/SDX.FunctionsDemo.Web
 	code .
 
 * Projekt `SDX.FunctionsDemo.Web`: Enthält die ASP.NET Core 2.2 Anwendung
 	* Der `HomeController` nutzt den `IImageFileService` um das Bild an die Logik zu übergeben und die berechneten Bilder abzurufen.
 	* In `Startup.cs` wird `InMemoryImageFileService` angemeldet, der das im Speicher tut. 
 * Projekt `SDX.FunctionsDemo.ImageProcessing`: Enthält den Code für die Bildverarbeitung
+	* In `ImageUtils` befindet sich die Logik für die Auswahl der Bildberechnung, sowie der Workaround für das SkiaSharp-Problem.
+
 
 

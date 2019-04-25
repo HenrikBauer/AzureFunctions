@@ -12,13 +12,9 @@
 
 ## Lab Part 4: Azure Functions in Azure deployen
 
-Im letzten Teil wird die Function App nach Azure deployt.
+Im letzten Teil wird die Function App nach Azure deployt. Die Function App sollte dabei im Azure Portal angelegt werden. 
 
->Es wird ein Azure-Konto benötigt. Fall kein Konto verfügbar ist, kann ein kostenloses Azure-Konto angelegt werden: https://azure.microsoft.com/de-de/free/
-
-Die Function App sollte dabei im Azure Portal angelegt werden. 
-
->Zwar geht dies auch aus VSCode heraus, dabei können jedoch bestimmte Dinge nicht vorgegeben werden, z.B. die Region.
+>Zwar bietet auch VSCode an, die Function App zu erstellen, dabei können jedoch bestimmte Dinge nicht vorgegeben werden, z.B. die Region.
 
 
 
@@ -26,7 +22,7 @@ Die Function App sollte dabei im Azure Portal angelegt werden.
 
 Hierzu sind folgende Schritte im Azure Portal notwendig: https://portal.azure.com
 
-* Ggf. die korrekte Subscription auswählen
+* Anmelden und ggf. die korrekte Subscription auswählen
 
 * Eine neue *Resource group* anlegen
 	* Beispiel für den Namen: `azurefunctionslab1`
@@ -44,7 +40,7 @@ Hierzu sind folgende Schritte im Azure Portal notwendig: https://portal.azure.co
 		* Bei `Resource Group` muss die gerade angelegte *Resource Group* ausgewählt werden.
 		* `Hosting Plan` = `Consumption Plan` stellt sicher, dass nach Verbrauch abgerechnet wird.
 		* Location: `West Europe` 
-		* `Application Insights` kann abgewählt werden 
+		* `Application Insights` kann abgewählt werden, gibt aber durchaus Einblicke in die Nutzung der Function 
 		
 		![azure-fa2.png](images/azure-fa2.png)
 	 
@@ -62,7 +58,7 @@ Nach Auswahl der Function App kann unter "Overview" die URL ermittelt werden, in
 
 In der Web-Anwendung muss die URL der Function App von der lokalen Umgebung auf die neue Function App in Azure geändert werden.
 
-	cd \sdxlab\AzureFunctions\lab1\src.web
+	cd /sdxlab/AzureFunctions/lab1/src.web
 	code .
 
 Im Projekt `SDX.FunctionsDemo.Web` die Datei `appsettings.json` öffnen und die URL ändern:
@@ -78,7 +74,7 @@ Hinweis: Zur Sicherheit sollte die lokal laufende Function App beendet werden.
 
 Danach die Web-Anwendung beenden, und neu starten:
 
-	cd \sdxlab\AzureFunctions\lab1\src.web\SDX.FunctionsDemo.Web
+	cd /sdxlab/AzureFunctions/lab1/src.web/SDX.FunctionsDemo.Web
 	dotnet run
  
 Ein neuer Test führt wieder zu Fehlermeldungen, weil die Function App in Azure noch nichts tut. Das wird sich im nächsten Schritt ändern.
@@ -89,7 +85,7 @@ Ein neuer Test führt wieder zu Fehlermeldungen, weil die Function App in Azure 
 
 Das Function App Projekt in VSCode öffnen:
 
-	cd \sdxlab\AzureFunctions\lab1\src.func
+	cd /sdxlab/AzureFunctions/lab1/src.func
 	code .
 
 Das Deployment kann folgendermaßen durchgeführt werden:
@@ -101,7 +97,7 @@ Das Deployment kann folgendermaßen durchgeführt werden:
 * Das Deployment bestätigen
 * Das Deployment benötigt einen Moment...
 
-Im Azure Portal können die Functions eingesehen werden. 
+Alternative: Unter dem Azure-Button links werden die Subscriptions afgelistet, wenn man in Azure angemeldet ist. Darunter findet sich die Function App. In deren Kontextmenü läßt sich das Deployment  ebenfalls anstossen. 
 
 
 
@@ -116,3 +112,6 @@ Die Lauffähigkeit der Function App läßt sich mit CURL verifizieren:
 	CURL https://azurefunctionslab1.azurewebsites.net/api/ping
 
 Ein neuer Test im Browser zeigt die Funktionsfähigkeit. 
+
+Hinweis: Beim allerersten Mal dauert es einen Moment, bis die Queue-Verarbeitung startet.
+

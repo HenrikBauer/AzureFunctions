@@ -20,6 +20,21 @@ In diesem Teil wird die Verarbeitung durch weitere Functions entkoppelt und para
 
 ### Schritt 1: Anpassen der Function *UploadImage*
 
+Wir werden Informationen als JSON in eine Queue stellen. Dazu wird eine neue Datenklasse angelegt:
+
+```CSharp
+namespace SDX.FunctionsDemo.FunctionApp
+{
+    public class ProcessImageMessage
+    {
+        public string ID { get; set; }
+        public string ImageType { get; set; }
+        public string FileName { get; set; }
+    }
+}
+```
+
+
 In VSCode wird die Function *UploadImage* angepaßt.
 Wir benötigen Zugriff auf die Queue, daher muss die Zeile für den Zugriff auf den Blob Container geändert werden:
 
@@ -31,21 +46,10 @@ var container = account.GetBlobContainer(StorageDefines.Blobs.Images);
 var queue = account.GetQueue(StorageDefines.Queues.ProcessImage);
 ```
 
-Die Schleife für die Verarbeitung muss die Berechnung der Bilder durch das Einstellen einer Message in eine Queue ersetzen. Um die Information nach JSON zu serialisieren wirdeine neue Klasse angelegt:
+In der Schleife für die Verarbeitung muss die Berechnung der Bilder durch das Einstellen einer Message in eine Queue ersetzt werden: 
 
 ```CSharp
-public class ProcessImageMessage
-{
-    public string ID { get; set; }
-    public string ImageType { get; set; }
-    public string FileName { get; set; }
-}
-```
-
-Anschließend ist die Schleife entsprechend anzupassen:
-
-```CSharp
-// ALT: var image = ImageUtils.ProcessImage(data, imageType);
+// ALT: var image = ImageUtils.ProcessImage(data, imageType, fileName);
 // ALT: blobName = BlobNameHelper.CreateBlobName(id, imageType);
 // ALT: await container.UploadBlobAsync(blobName, image);
 // ALT: log.LogInformation("Image processed: " + blobName);
@@ -54,7 +58,7 @@ var message = new ProcessImageMessage
 {
     ID = id,
     ImageType = imageType,
-    FileName = filename
+    FileName = fileName
 };
 var json = JsonConvert.SerializeObject(message);
 await queue.AddMessageAsync(json);
@@ -64,7 +68,7 @@ log.LogInformation("Image processing requested: " + json);
 
 Zum Test der Anwendung muss die Function App gestoppt, neu gebaut und gestartet werden:
 
-	cd \sdxlab\AzureFunctions\lab1\src.func\SDX.FunctionsDemo.FunctionApp
+	cd /sdxlab/AzureFunctions/lab1/src.func/SDX.FunctionsDemo.FunctionApp
 	dotnet build
 	func host start
 
@@ -95,13 +99,13 @@ using SDX.FunctionsDemo.ImageProcessing;
 ```
 
 
-Die Function-Methode ist anzupassen. Der Parameter mit dem Attribut `QueueTrigger` ist als `string` deklariert. Da es sich in der Message um JSON handelt, können wir direkt den neuen Typ `ProcessImageMessage` angeben. Außerdem muss der `ExecutionContext` wieder ergänzt werden:
+Die Function-Methode ist anzupassen. Der gesamte Funktionsrumpf kann gelöscht werden. Der Parameter mit dem Attribut `QueueTrigger` ist als `string` deklariert. Da es sich in der Message um JSON handelt, können wir direkt den neuen Typ `ProcessImageMessage` angeben. Außerdem muss der `ExecutionContext` wieder ergänzt werden:
 
 ```CSharp
 [FunctionName("ProcessImage")]
 public static async Task RunAsync(
-    [QueueTrigger("processimage", Connection = "AzureWebJobsStorage")]ProcessImageMessage message,
-    ExecutionContext context,
+    [QueueTrigger("processimage", Connection = "AzureWebJobsStorage")]ProcessImageMessage message,  // <<-- angepaßt !!!
+    ExecutionContext context,		// <<-- NEU !!!
     ILogger log)
 {
 ```
@@ -130,7 +134,7 @@ var data = ms.ToArray();
 Die Berechnung und das Speichern entspricht dem ursprünglichen Schleifenkörper: 
 
 ```CSharp
-var image = ImageUtils.ProcessImage(data, imageType);
+var image = ImageUtils.ProcessImage(data, imageType, fileName);
 blobName = BlobNameHelper.CreateBlobName(id, imageType);
 await container.UploadBlobAsync(blobName, image);
 log.LogInformation("Image processed: " + blobName);
@@ -139,7 +143,7 @@ log.LogInformation("Image processed: " + blobName);
 
 Wieder muss die Function App gestoppt, neu gebaut und gestartet werden:
 
-	cd \sdxlab\AzureFunctions\lab1\src.func\SDX.FunctionsDemo.FunctionApp
+	cd /sdxlab/AzureFunctions/lab1/src.func/SDX.FunctionsDemo.FunctionApp
 	dotnet build
 	func host start
 
@@ -149,4 +153,6 @@ Ein erneuter Test der die Anwendung zeigt:
 * Da die Bilder noch nicht zur Verfügung stehen, werden Platzhalter angezeigt.
 * Die Queue-Functions werden nun im Hintergrund parallel abgearbeitet.
 * Da die Anwendung ein Auto-Refresh macht, werden die Bilder mit einiger Verzögerung angezeigt.
+
+Hinweis: Beim allerersten Mal dauert es einen Moment, bis die Queue-Verarbeitung startet.
 

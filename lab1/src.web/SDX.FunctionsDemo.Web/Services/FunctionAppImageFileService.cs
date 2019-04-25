@@ -24,7 +24,7 @@ namespace SDX.FunctionsDemo.Web.Services
             try
             {
                 var content = new ByteArrayContent(data);
-                content.Headers.Add("x-sdx-filename", fileName);
+                content.Headers.Add("x-sdx-fileName", fileName);
                 content.Headers.Add("x-sdx-contentType", contentType);
 
                 var requestUri = _baseUrl + "/api/UploadImage";

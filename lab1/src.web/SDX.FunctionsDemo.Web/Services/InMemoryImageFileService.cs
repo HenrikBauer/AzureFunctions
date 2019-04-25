@@ -20,7 +20,7 @@ namespace SDX.FunctionsDemo.Web.Services
             foreach (var imageType in ImageUtils.ImageTypes)
             {
                 Debug.WriteLine("Processing " + imageType + " ...");
-                images[imageType] = ImageUtils.ProcessImage(data, imageType);
+                images[imageType] = ImageUtils.ProcessImage(data, imageType, fileName);
             }
 
             var id = Guid.NewGuid().ToString();

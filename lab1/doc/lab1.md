@@ -17,18 +17,32 @@ Die Verarbeitung der Bilder dauert entsprechend lange und soll deshalb in eine A
 
 >Hinweis: Um den Effekt deutlich zu machen, wurde die Berechnung künstlich verlängert.
 
-
 ## Voraussetzungen
 
 Kenntnisse von C# werden vorausgesetzt. Kenntnisse von ASP.NET MVC sind von Vorteil. 
 
-Es wird ein Azure-Konto benötigt. Fall kein Konto verfügbar ist, kann ein kostenloses Azure-Konto angelegt werden: https://azure.microsoft.com/de-de/free/
+Es wird ein Azure-Konto benötigt. Fall kein Konto verfügbar ist, kann ein kostenloses Azure-Konto angelegt werden: 
 
-Notwendigkeit eines Azure-Kontos:
+* https://azure.microsoft.com/de-de/free/
+* https://azure.microsoft.com/de-de/free/students/
 
-* Unter Windows: Der Account wird nur für den letzten Teil (Azure Deployment) benötigt, die Entwicklung ist lokal möglich.
+Zur Notwendigkeit eines Azure-Kontos:
+
+* Unter Windows: Der Account wird ab Lab4 (Azure Deployment) benötigt, die Entwicklung für Lab1 bis Lab3 ist lokal möglich.
 * Unter anderen Betriebssystemen: Der Account wird auch für die Entwicklung benöigt, da es keinen Storage Emulator gibt.
-	>Mögliche Alternative (nicht getestet): https://github.com/azure/azurite
+	> Mögliche Alternative: https://github.com/azure/azurite
+	> 
+	> Getestet unter Ubuntu 18.04, unter MacOS mit Problemen
+
+
+## Hinweise
+
+* Das Lab verwendet Visual Studio Code (VSCode) um auf Code-Ebene plattformunabhägig zu sein. 
+* Das Lab wurde unter Windows entwickelt; auf anderen Plattformen kann es zu Detailunterschieden kommen.
+* Das Lab wurde unter MacOS und Ubuntu 18.04 getestet.
+* Pfade sind in Windows-Notation angegeben und müssen unter Unix-Derivaten um das Home-Verzeichnis ergänzt werden:
+	* Windows: `/sdxlab/` bzw. `cd /`
+	* Unix-Derivat: `~/sdxlab/` bzw. `cd ~`
 
 
 
@@ -40,6 +54,15 @@ Notwendigkeit eines Azure-Kontos:
 * [Lab Part 3: Azure Functions optimieren](lab1-part3.md): In diesem Teil wird die Verarbeitung durch weitere Functions entkoppelt und parallelisiert.
 * [Lab Part 4: Azure Functions in Azure deployen](lab1-part4.md): Im letzten Teil wird die Function App nach Azure deployt.
 
+
+## Caveat
+Die Anwendung nutzt [SkiaSharp](https://github.com/mono/SkiaSharp) als plattformunabhängige Bibliothek für Bildverarbeitung.
+
+Sowohl unter MacOS X, als auch unter Ubuntu 18.04 kommt es dabei zu folgender Fehlermeldung: 
+
+[![skiaissue.png](images/skiaissue300.png)](images/skiaissue.png)
+
+Der Lab-Code ist so angepaßt, dass auf Nicht-Windows-Systemen eine simulierte Bildberechnung verwendet wird: Die Beispielbilder werden vorberechnet mit ausgeliefert.
 
 
 # Links

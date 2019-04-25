@@ -24,7 +24,7 @@ Folgende Schritte sind notwendig:
 
 Anschließend die Web-Anwendung beenden, neu bauen und starten:
 
-	cd \sdxlab\AzureFunctions\lab1\src.web\SDX.FunctionsDemo.Web
+	cd /sdxlab/AzureFunctions/lab1/src.web/SDX.FunctionsDemo.Web
 	dotnet build
 	dotnet run
 
@@ -35,22 +35,44 @@ Hinweis: Die Web-Anwendung ist nach wie vor funktionsfähig, meldet jetzt jedoch
 
 
 
-### Schritt 2: Azure Function App erstellen
+### Zwischenschritt: Storage verfügbar machen
 
+#### Windows
 Unter Windows muss für die lokale Entwickler der Storage Emulator gestartet und ggf. vorher initialisiert werden: 
 
 	"C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator\AzureStorageEmulator.exe" init
 	"C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator\AzureStorageEmulator.exe" start
 
->Alternativ bzw. für die Nutzung unter anderen Betriebsystemen muss ein Storage Account in Azure angelegt werden: https://azure.microsoft.com/de-de/services/storage/
+>Hinweis: Bei Nutzung von Visual Studio wird der Storage Emulator automatisch gestartet. 
 
+#### Alternativ/andere Betriebssysteme: Storage Account
+
+Alternativ bzw. für die Nutzung unter anderen Betriebsystemen kann ein Storage Account in Azure angelegt werden: 
+
+* https://azure.microsoft.com/de-de/services/storage/
+
+
+#### Andere OS: Azurite
+
+Alternativ gibt es eine Open Source-Variante:
+
+>A lightweight server clone of Azure Storage that simulates most of the commands supported by it with minimal dependencies
+
+* https://github.com/azure/azurite
+
+>Hinweis: Getestet unter Ubuntu 18.04, unter MacOS mit Problemen.
+
+
+
+
+### Schritt 2: Azure Function App erstellen
 
 VSCode starten:
 
-	cd \sdxlab\AzureFunctions\lab1\src.func
+	cd /sdxlab/AzureFunctions/lab1/src.func
 	code .
 
-Im Verzeichnis `\sdxlab\AzureFunctions\lab1\src.func` befinden sich bereits zwei Projekte:
+Im Verzeichnis `/sdxlab/AzureFunctions/lab1/src.func` befinden sich bereits zwei Projekte:
 
 * `SDX.FunctionsDemo.ImageProcessing`: Das gleiche Projekt, das auch von der Web-Anwendung verwendet wird.
 * `SDX.FunctionsDemo.FunctionApp.Utils`: Einige Hilfsfunktionen für den zu erstellenden Code.
@@ -68,7 +90,7 @@ In VSCode sind folgende Buttons relevant:
 Folgende Aktionen ausführen:
 
 * in VSCode: "Create New Project"   
-	* Verzeichnis `\sdxlab\AzureFunctions\lab1\src.func\SDX.FunctionsDemo.FunctionApp` anlegen und auswählen
+	* Verzeichnis `/sdxlab/AzureFunctions/lab1/src.func/SDX.FunctionsDemo.FunctionApp` anlegen und auswählen
 	* Sprache: 			`C#`
 	* Version: 			`Azure Functions v2`
 	* Function Type: 	`HttpTrigger`
@@ -80,7 +102,7 @@ Folgende Aktionen ausführen:
 Die Function App kann in VSCode gebaut und gestartet werden, die nachfolgende Beschreibung nutzt jedooch die Kommandozeile. 
 >Da die Konsole danach blockiert ist, wird empfohlen, eine separate Konsole zu starten.
 
-	cd \sdxlab\AzureFunctions\lab1\src.func\SDX.FunctionsDemo.FunctionApp
+	cd /sdxlab/AzureFunctions/lab1/src.func/SDX.FunctionsDemo.FunctionApp
 	dotnet build
 	func host start
 
@@ -89,7 +111,7 @@ Testen der Function:
 	curl http://localhost:7071/api/Ping
 	curl http://localhost:7071/api/Ping?name=Alexander
 
-Die erstellte Function zeigt den grundsätzlichen Aufbau:
+Die erstellte Function zeigt den grundsätzlichen Aufbau einer Function App Function:
 
 * Eine statische Funktion mit dem Attribut `[FunctionName("name)]`
 * Ein Parameter mit einem Trigger-Attribut, hier `[HttpTrigger(...)]`
@@ -103,14 +125,28 @@ TIP: Eine Ping-Funktion sollte immer Teil einer Function App sein, um die grunds
 
 
 
-### Schritt 3: Projektreferenzen setzen
+### Schritt 3: Projekt-Konfiguration
 
 Zunächst müssen Referenzen auf die beiden anderen Projekte gesetzt werden:
 
-	cd \sdxlab\AzureFunctions\lab1\src.func\SDX.FunctionsDemo.FunctionApp
-	dotnet add reference ..\SDX.FunctionsDemo.FunctionApp.Utils\SDX.FunctionsDemo.FunctionApp.Utils.csproj
-	dotnet add reference ..\SDX.FunctionsDemo.ImageProcessing\SDX.FunctionsDemo.ImageProcessing.csproj
-	dotnet build
+	cd /sdxlab/AzureFunctions/lab1/src.func/SDX.FunctionsDemo.FunctionApp
+	dotnet add reference ../SDX.FunctionsDemo.FunctionApp.Utils/SDX.FunctionsDemo.FunctionApp.Utils.csproj
+	dotnet add reference ../SDX.FunctionsDemo.ImageProcessing/SDX.FunctionsDemo.ImageProcessing.csproj
+
+
+Als nächstes muss der Connection String konfiguriert werden. Bei lokaler Ausführung steht der Connection String in der Datei `local.settings.json`, beim späteren einem Deplyoment in Azure kommt er aus dem Azure-Portal.
+ 
+Key ist standardmäßig `AzureWebJobsStorage`, bei Nutzung des Storage Emulators lautet der Connection String `UseDevelopmentStorage=true`:
+
+```JavaScript
+"AzureWebJobsStorage": "UseDevelopmentStorage=true", 
+```
+
+Bei Nutzung von Storage ein Azure: Der Connection String kann dem Portal entnommen werden:
+
+* Storage Account im Portal auswählen
+* "Settings/Access Keys"
+* "Connection string"  
 
 
 
@@ -135,10 +171,10 @@ using SDX.FunctionsDemo.FunctionApp.Utils;
 using SDX.FunctionsDemo.ImageProcessing;
 ```
 
-Die Function-Methode ist anzupassen. Zunächst muss die Information aus dem Request ausgelesen werden:
+Die Function-Methode ist anzupassen. Der gesamte Funktionsrumpf kann gelöscht werden. Danach die Information aus dem Request ausgelesen werden:
 
 ```CSharp
-string filename = req.Headers["x-sdx-filename"];
+string fileName = req.Headers["x-sdx-fileName"];
 string contentType = req.Headers["x-sdx-contentType"];
 var ms = new MemoryStream();
 req.Body.CopyTo(ms);
@@ -147,23 +183,7 @@ var data = ms.ToArray();
 
 Das Bild muss irgendwo gespeichert werden. Da Azure Functions bereits Azure Storage verwendet, bietet sich die Ablage in Blob Storage an. Projekt `SDX.FunctionsDemo.FunctionApp.Utils` enthält Hilfsfunktionen um den Umgang damit zu vereinfachen.
 
-Erste Hürde ist dabei der Zugriff auf die Konfiguration.
-Bei einem Deplyoment in Azure kommt der Connection String aus dem Azure-Portal. Beim lokalen Ausführen steht er in der Datei `local.settings.json`. Key ist `AzureWebJobsStorage`.
-
-Bei Nutzung des Storage Emulators:
-
-```JavaScript
-"AzureWebJobsStorage": "UseDevelopmentStorage=true", 
-```
-
->Bei Nutzung von Storage ein Azure: Der Connection String kann dem Portal entnommen werden:
->
->* Storage Account im Portal auswählen
->* "Settings/Access Keys"
->* "Connection string"  
-
-
-Die Klasse `ConfigurationHelper` stellt den Zugriff auf die Konfiguration zur Verfügung. Damit sie das tun kann benötigt sie Zugriff auf die Laufzeitumgebung. Dieser kann ihr gewährt werden, indem die Function einen zusätzlichen Parameter vom Typ `ExecutionContext` in ihre Parameterliste aufnimmt:
+Erste Hürde ist dabei der Zugriff auf die Konfiguration. Die Klasse `ConfigurationHelper` stellt den Zugriff darauf Verfügung, benötigt dafür jedoch Zugriff auf die Laufzeitumgebung. Dieser kann ihr gewährt werden, indem die Function einen zusätzlichen Parameter vom Typ `ExecutionContext` in ihre Parameterliste aufnimmt:
 
 ```CSharp
 [FunctionName("UploadImage")]
@@ -195,7 +215,7 @@ Die erwarteten Bilder müssen berechnet und ebenfalls im Blob Storage abgelegt w
 ```CSharp
 foreach (var imageType in ImageUtils.ImageTypes)
 {
-    var image = ImageUtils.ProcessImage(data, imageType);
+    var image = ImageUtils.ProcessImage(data, imageType, fileName);
     blobName = BlobNameHelper.CreateBlobName(id, imageType);
     await container.UploadBlobAsync(blobName, image);
     log.LogInformation("Image processed: " + blobName);
@@ -237,22 +257,22 @@ using SDX.FunctionsDemo.FunctionApp.Utils;
 using SDX.FunctionsDemo.ImageProcessing;
 ```
 
-Die Function-Methode ist anzupassen. Der `ExecutionContext` muss wieder ergänzt werden, sowie die Informationen aus dem Request ausgelesen werden:
+Die Function-Methode ist anzupassen. Der gesamte Funktionsrumpf kann gelöscht werden. Außerdem muss der `ExecutionContext` wieder ergänzt werden:
 
 ```CSharp
 [FunctionName("GetImage")]
 public static async Task<IActionResult> Run(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-    ExecutionContext context,
+    ExecutionContext context,		// <<-- NEU !!!
     ILogger log)
 {
-    string id = req.Query["id"];
-    string imageType = req.Query["imageType"];
 ```
 
-Anhand der ID und des ImageType läßt sich der Blob-Name bestimmen und eine Referenz auf den Blob ermitten. Ob der Blob tatsächlich existiert muss gesondert geprüft werden:
+Anhand der übergebenen ID und des ImageType läßt sich der Blob-Name bestimmen und eine Referenz auf den Blob ermitten. Ob der Blob tatsächlich existiert muss gesondert geprüft werden:
 
 ```CSharp
+string id = req.Query["id"];
+string imageType = req.Query["imageType"];
 var blobName = BlobNameHelper.CreateBlobName(id, imageType);
 var blob = context
     .GetConfiguration()
@@ -279,7 +299,7 @@ return new FileStreamResult(strm, ImageUtils.ContentTypePng);
 
 Damit ist die Logik in der Function App umgesetzt. Die Function App muss gestoppt, neu gebaut und gestartet werden. Da in der lokalen Umgebung von Azure Functions immer die gleiche URL verwendet wird, ist die URL in der Web-Anwendung bereits korrekt konfiguriert.  
 
-	cd \sdxlab\AzureFunctions\lab1\src.func\SDX.FunctionsDemo.FunctionApp
+	cd /sdxlab/AzureFunctions/lab1/src.func/SDX.FunctionsDemo.FunctionApp
 	dotnet build
 	func host start
 
