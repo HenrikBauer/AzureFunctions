@@ -7,7 +7,7 @@
 	* [Lab Part 2: Azure Functions einführen](lab1-part2.md)
 	* [Lab Part 3: Azure Functions optimieren](lab1-part3.md)
 	* [Lab Part 4: Azure Functions in Azure deployen](lab1-part4.md)
-
+	* [Lab Part 5: Azure Functions absichern](lab1-part5.md)
 
 
 ## Installation
