@@ -15,27 +15,7 @@ In diesem Teil wird eine Azure Functions App angelegt und die Berechnungslogik f
 Wir benötigen eine Function zum Upload des Bildes, sowie eine weitere zum Abrufen der berechneten Bilder. 
 
 
-
-### Schritt 1: Web-Anwendung umstellen
-
-Folgende Schritte sind notwendig:
-
-* In `Startup.cs` von `InMemoryImageFileService` auf `FunctionAppImageFileService` umstellen.
-
-Anschließend die Web-Anwendung beenden, neu bauen und starten:
-
-	cd /sdxlab/AzureFunctions/lab1/src.web/SDX.FunctionsDemo.Web
-	dotnet build
-	dotnet run
-
-Der `FunctionAppImageFileService` verlagert die Verarbeitung, in dem er sie in Web-Requests übersetzt. Die aufgerufenen URLs müssen von der Function App als Endpunkte bereitgestellt werden (Aufgabe im nächsten Schritt).
-
-Hinweis: Die Web-Anwendung ist nach wie vor funktionsfähig, meldet jetzt jedoch einen Fehler beim Upload. 
-
-
-
-
-### Zwischenschritt: Storage verfügbar machen
+### Vorbereitung: Storage verfügbar machen
 
 #### Windows
 Unter Windows muss für die lokale Entwickler der Storage Emulator gestartet und ggf. vorher initialisiert werden: 
@@ -62,6 +42,24 @@ Alternativ gibt es eine Open Source-Variante:
 
 >Hinweis: Getestet unter Ubuntu 18.04, unter MacOS mit Problemen.
 
+
+
+
+### Schritt 1: Web-Anwendung umstellen
+
+Folgende Schritte sind notwendig:
+
+* In `Startup.cs` von `InMemoryImageFileService` auf `FunctionAppImageFileService` umstellen.
+
+Anschließend die Web-Anwendung beenden, neu bauen und starten:
+
+	cd /sdxlab/AzureFunctions/lab1/src.web/SDX.FunctionsDemo.Web
+	dotnet build
+	dotnet run
+
+Der `FunctionAppImageFileService` verlagert die Verarbeitung, in dem er sie in Web-Requests übersetzt. Die aufgerufenen URLs müssen von der Function App als Endpunkte bereitgestellt werden (Aufgabe im nächsten Schritt).
+
+Hinweis: Die Web-Anwendung ist nach wie vor funktionsfähig, meldet jetzt jedoch einen Fehler beim Upload. 
 
 
 
