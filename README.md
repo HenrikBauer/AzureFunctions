@@ -5,7 +5,7 @@
 
 ## Azure Functions Lab 1
 Dieses Lab soll den ersten Einstieg in Azure Functions bieten:
-[Azure Functions Lab 1](doc/lab1.md)
+[Azure Functions Lab 1](lab1/doc/lab1.md)
 
 ##
 
