@@ -46,6 +46,13 @@ Testanwendung verwenden, z.B. in Chrome:
 	* *Hinweis: Um das Problem deutlich zu machen wurde die Verarbeitung künstlich verlängert!*
 3. Auf der Ergebnisseite werden die berechneten Bilder angezeigt.
 
+> Achtung! Es gibt unter MacOS einen offenen Bug mit SkiaSahrp (plattformunabhängige Grafik-Library).
+>
+> Symptom: Fehlermeldung `SkiaSharp: Unable to load shared library 'libSkiaSharp' or one of its dependencies.` oder vergleichbar 
+>
+> Workaround: Aufrufe an `ImageUtils.ProcessImage` durch `ImageUtilsFake.ProcessImage` ersetzen. Damit werden die Bilder nicht berechnet, sondern vorberechnete Bilder ausgeliefert.  
+
+
 Quellcode analysieren:
 
 	cd \sdxlab\AzureFunctions\lab1\src.web\SDX.FunctionsDemo.Web

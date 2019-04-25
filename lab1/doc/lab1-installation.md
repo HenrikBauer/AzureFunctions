@@ -50,6 +50,11 @@ Für Windows steht der Azure Storage Emulator als Teil des Azure SDK zu Verfügu
 
 Unter anderen Betriebsystemen muss in Azure ein Storage Account angelegt werden: https://azure.microsoft.com/de-de/services/storage/
 
+>Alternativ gibt es eine Open Source-Variante:
+>
+>>A lightweight server clone of Azure Storage that simulates most of the commands supported by it with minimal dependencies
+>
+>https://github.com/azure/azurite
 
 
 ### Optional:

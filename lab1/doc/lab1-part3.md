@@ -38,6 +38,7 @@ public class ProcessImageMessage
 {
     public string ID { get; set; }
     public string ImageType { get; set; }
+    public string FileName { get; set; }
 }
 ```
 
@@ -49,7 +50,12 @@ Anschließend ist die Schleife entsprechend anzupassen:
 // ALT: await container.UploadBlobAsync(blobName, image);
 // ALT: log.LogInformation("Image processed: " + blobName);
 // NEU:
-var message = new ProcessImageMessage { ID = id, ImageType = imageType };
+var message = new ProcessImageMessage
+{
+    ID = id,
+    ImageType = imageType,
+    FileName = filename
+};
 var json = JsonConvert.SerializeObject(message);
 await queue.AddMessageAsync(json);
 log.LogInformation("Image processing requested: " + json);
@@ -98,13 +104,15 @@ public static async Task RunAsync(
     ExecutionContext context,
     ILogger log)
 {
-    var id = message.ID;
-    var imageType = message.ImageType;
 ```
 
 Zunächst müssen wir das Orginalbild laden, das von der HTTP-Function im Blob Stoage abgelegt wurde.  
 
 ```CSharp
+var id = message.ID;
+var imageType = message.ImageType;
+var fileName = message.FileName;
+
 var container = context
     .GetConfiguration()
     .GetStorageAccount()

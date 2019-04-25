@@ -5,6 +5,15 @@ using System.Threading;
 
 namespace SDX.FunctionsDemo.ImageProcessing
 {
+    /// <summary>
+    /// Unter MacOS gibt es mit SkiaShapr eine Fehlermeldung:
+    ///     SkiaSharp: Unable to load shared library 'libSkiaSharp' or one of its dependencies. 
+    ///     
+    /// Ursache vermutlich: https://github.com/mono/SkiaSharp/issues/775
+    /// Scheint behoben, aber noch nicht als nuget package verfügbar.
+    /// 
+    /// Der Workaround liefert vorberechnete Bilder aus den Manifest Ressourcen.
+    /// </summary>
     public static class ImageUtilsFake
     {
         public static byte[] ProcessImage(byte[] data, string imageType, string fileName)

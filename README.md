@@ -1,6 +1,6 @@
 # Azure Functions
 
-![af.png](doc/images/af.png)
+![af.png](lab1/doc/images/af.png)
 
 
 ## Azure Functions Lab 1
