@@ -98,7 +98,9 @@ Das Deployment kann folgendermaßen durchgeführt werden:
 * Das Deployment bestätigen
 * Das Deployment benötigt einen Moment...
 
-Alternative: Unter dem Azure-Button links werden die Subscriptions afgelistet, wenn man in Azure angemeldet ist. Darunter findet sich die Function App. In deren Kontextmenü läßt sich das Deployment  ebenfalls anstossen. 
+>Hinweis: Zur Auswahl der Function App muss die Subscription ausgewählt werden. Es kann sein, dass die Subscriptions nicht sauber aufgelistet werden.
+>
+>Alternative: Unter dem Azure-Button links werden die Subscriptions aufgelistet, wenn man in Azure angemeldet ist. Darunter findet sich die Function App. In deren Kontextmenü läßt sich das Deployment  ebenfalls anstossen. 
 
 
 

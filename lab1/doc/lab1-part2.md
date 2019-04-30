@@ -87,6 +87,8 @@ In VSCode sind folgende Buttons relevant:
 
 Folgende Aktionen ausführen:
 
+>Hinweis: Bei der Neuanlage eines Projektes wird automatisch auch eine neue Function angelegt.
+
 * in VSCode: "Create New Project"   
 	* Verzeichnis `/sdxlab/AzureFunctions/lab1/src.func/SDX.FunctionsDemo.FunctionApp` anlegen und auswählen
 	* Sprache: 			`C#`
@@ -96,6 +98,7 @@ Folgende Aktionen ausführen:
 	* Namespace:		`SDX.FunctionsDemo.FunctionApp`
 	* Access Rights:	`Anonymous`
 
+>Hinweis: Es kann sein, dass die Version nicht abgefragt wird.
 
 Die Function App kann in VSCode gebaut und gestartet werden, die nachfolgende Beschreibung nutzt jedooch die Kommandozeile. 
 >Da die Konsole danach blockiert ist, wird empfohlen, eine separate Konsole zu starten.
@@ -140,7 +143,7 @@ Key ist standardmäßig `AzureWebJobsStorage`, bei Nutzung des Storage Emulators
 "AzureWebJobsStorage": "UseDevelopmentStorage=true", 
 ```
 
-Bei Nutzung von Storage ein Azure: Der Connection String kann dem Portal entnommen werden:
+Bei Nutzung von Storage in Azure: Der Connection String kann dem Portal entnommen werden:
 
 * Storage Account im Portal auswählen
 * "Settings/Access Keys"
@@ -181,7 +184,7 @@ var data = ms.ToArray();
 
 Das Bild muss irgendwo gespeichert werden. Da Azure Functions bereits Azure Storage verwendet, bietet sich die Ablage in Blob Storage an. Projekt `SDX.FunctionsDemo.FunctionApp.Utils` enthält Hilfsfunktionen um den Umgang damit zu vereinfachen.
 
-Erste Hürde ist dabei der Zugriff auf die Konfiguration. Die Klasse `ConfigurationHelper` stellt den Zugriff darauf Verfügung, benötigt dafür jedoch Zugriff auf die Laufzeitumgebung. Dieser kann ihr gewährt werden, indem die Function einen zusätzlichen Parameter vom Typ `ExecutionContext` in ihre Parameterliste aufnimmt:
+Erste Hürde ist dabei der Zugriff auf die Konfiguration. Die Klasse `ConfigurationHelper` stellt den Zugriff darauf zur Verfügung, benötigt dafür jedoch Zugriff auf die Laufzeitumgebung. Dieser kann ihr gewährt werden, indem die Function einen zusätzlichen Parameter vom Typ `ExecutionContext` in ihre Parameterliste aufnimmt:
 
 ```CSharp
 [FunctionName("UploadImage")]

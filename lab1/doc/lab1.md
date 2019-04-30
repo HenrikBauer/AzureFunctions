@@ -59,7 +59,7 @@ Zur Notwendigkeit eines Azure-Kontos:
 ## Caveat
 Die Anwendung nutzt [SkiaSharp](https://github.com/mono/SkiaSharp) als plattformunabhängige Bibliothek für Bildverarbeitung.
 
-Sowohl unter MacOS X, als auch unter Ubuntu 18.04 kommt es dabei zu folgender Fehlermeldung: 
+Sowohl unter macOS 10.13.6, als auch unter Ubuntu 18.04 kommt es dabei zu folgender Fehlermeldung: 
 
 [![skiaissue.png](images/skiaissue300.png)](images/skiaissue.png)
 
