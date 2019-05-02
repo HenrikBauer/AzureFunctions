@@ -1,17 +1,8 @@
 # Azure Functions Lab 
 
-## Inhaltsverzeichnis
-* [Lab-Übersicht](lab1.md)
-	* [Installation](lab1-installation.md)
-	* [Lab Part 1: Code bereitstellen](lab1-part1.md)
-	* [Lab Part 2: Azure Functions einführen](lab1-part2.md)
-	* [Lab Part 3: Azure Functions optimieren](lab1-part3.md)
-	* [Lab Part 4: Azure Functions in Azure deployen](lab1-part4.md)
-	* [Lab Part 5: Azure Functions absichern](lab1-part5.md)
-
-
-
 ## Lab Part 4: Azure Functions in Azure deployen
+
+![part4.png](images/part4.png)
 
 In diesem Teil wird die Function App nach Azure deployt. Die Function App sollte dabei im Azure Portal angelegt werden. 
 
@@ -118,3 +109,5 @@ Ein neuer Test im Browser zeigt die Funktionsfähigkeit.
 
 Hinweis: Beim allerersten Mal dauert es einen Moment, bis die Queue-Verarbeitung startet.
 
+---
+[« Zurück](lab1-part3.md) | [Inhalte](lab1.md#lab-inhalte) | [Weiter »](lab1-part5.md)

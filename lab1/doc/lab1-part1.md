@@ -1,17 +1,9 @@
 # Azure Functions Lab 
 
-## Inhaltsverzeichnis
-* [Lab-Übersicht](lab1.md)
-	* [Installation](lab1-installation.md)
-	* [Lab Part 1: Code bereitstellen](lab1-part1.md)
-	* [Lab Part 2: Azure Functions einführen](lab1-part2.md)
-	* [Lab Part 3: Azure Functions optimieren](lab1-part3.md)
-	* [Lab Part 4: Azure Functions in Azure deployen](lab1-part4.md)
-	* [Lab Part 5: Azure Functions absichern](lab1-part5.md)
-
-
-
 ## Lab Part 1: Code bereitstellen
+
+![part1.png](images/part1.png)
+
 Im ersten Teil wird der Lab-Code bereitgestellt, die Testanwendung zum Laufen gebracht und der Code analysiert.   
 
 
@@ -59,5 +51,7 @@ Quellcode analysieren:
 * Projekt `SDX.FunctionsDemo.ImageProcessing`: Enthält den Code für die Bildverarbeitung
 	* In `ImageUtils` befindet sich die Logik für die Auswahl der Bildberechnung, sowie der Workaround für das SkiaSharp-Problem.
 
+---
+[« Zurück](lab1-installation.md) | [Inhalte](lab1.md#lab-inhalte) | [Weiter »](lab1-part2.md)
 
 

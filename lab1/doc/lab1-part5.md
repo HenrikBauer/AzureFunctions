@@ -1,20 +1,11 @@
 # Azure Functions Lab 
 
-## Inhaltsverzeichnis
-* [Lab-Übersicht](lab1.md)
-	* [Installation](lab1-installation.md)
-	* [Lab Part 1: Code bereitstellen](lab1-part1.md)
-	* [Lab Part 2: Azure Functions einführen](lab1-part2.md)
-	* [Lab Part 3: Azure Functions optimieren](lab1-part3.md)
-	* [Lab Part 4: Azure Functions in Azure deployen](lab1-part4.md)
-	* [Lab Part 5: Azure Functions absichern](lab1-part5.md)
-
-
-
 ## Lab Part 5: Azure Functions absichern
 
+![part5.png](images/part5.png)
+
 Die in Azure verfügbaren HTTP Functions sind offen und für jeden erreichbar. In diesem Teil werden sie gegen unberechtigten Zugriff abgesichert.
- 
+
 
 
 ### Schritt 1: Anpassen der HTTP Functions
@@ -86,3 +77,5 @@ Ein neuer Test im Browser zeigt, dass die Funktionsfähigkeit wieder hergestellt
 
 Ruft man hingegen eine der beiden URLs auf (z.B. in Postman), ohne den passenden Function Key mit zu übergeben, erhält man als Antwort ein `401 Unauthorized`.
 
+---
+[« Zurück](lab1-part4.md) | [Inhalte](lab1.md#lab-inhalte) 

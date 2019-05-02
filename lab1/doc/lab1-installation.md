@@ -1,16 +1,8 @@
 # Azure Functions Lab 
 
-## Inhaltsverzeichnis
-* [Lab-Übersicht](lab1.md)
-	* [Installation](lab1-installation.md)
-	* [Lab Part 1: Code bereitstellen](lab1-part1.md)
-	* [Lab Part 2: Azure Functions einführen](lab1-part2.md)
-	* [Lab Part 3: Azure Functions optimieren](lab1-part3.md)
-	* [Lab Part 4: Azure Functions in Azure deployen](lab1-part4.md)
-	* [Lab Part 5: Azure Functions absichern](lab1-part5.md)
-
-
 ## Installation
+
+![installation.png](images/installation.png)
 
 Das Lab verwendet Visual Studio Code (VSCode) um auf Code-Ebene plattformunabhägig zu sein. Nutzer von Visual Studio Code finden unten zusätzliche Hinweise.
 
@@ -22,8 +14,12 @@ Das Lab verwendet Visual Studio Code (VSCode) um auf Code-Ebene plattformunabhä
 		* https://marketplace.visualstudio.com/itemdetails?itemName=ms-vscode.csharp
 	* Azure Functions for Visual Studio Code: 
 		* https://marketplace.visualstudio.com/itemdetails?itemName=ms-azuretools.vscode-azurefunctions 
-		* vscode:extension/ms-azuretools.vscode-azurefunctions
-* Azure Functions Core Tools (inkl. .NET Core SDK, node.js)
+		* oder in VSCode: vscode:extension/ms-azuretools.vscode-azurefunctions
+* Azure Functions Core Tools:
+	* enthält:
+		* .NET Core 2.x SDK 
+		* Node.js (inkl. npm)
+		* Core Tools package
 	* https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local#v2
 * GIT: 
 	* Installer: https://git-scm.com/downloads
@@ -53,4 +49,8 @@ Unter anderen Betriebsystemen muss in Azure ein Storage Account angelegt werden:
 * Postman, curl, oder vergleichbar.
 
 ### Visual Studio 2017/2019-Nutzer
-Die Nutzung von Visual Studio 2017/2019 ist ebenfalls möglich und sollte wenig Probleme bereiten. Notwendige Informationen zur Installation finden sich hier: https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-your-first-function-visual-studio
+Die Nutzung von Visual Studio 2017/2019 ist ebenfalls möglich und sollte wenig Probleme bereiten. 
+Notwendige Informationen zur Installation finden sich hier: https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-your-first-function-visual-studio
+
+---
+[Inhalte](lab1.md#lab-inhalte) | [Weiter »](lab1-part1.md)

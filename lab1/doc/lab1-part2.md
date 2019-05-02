@@ -1,16 +1,9 @@
 # Azure Functions Lab 
 
-## Inhaltsverzeichnis
-* [Lab-Übersicht](lab1.md)
-	* [Installation](lab1-installation.md)
-	* [Lab Part 1: Code bereitstellen](lab1-part1.md)
-	* [Lab Part 2: Azure Functions einführen](lab1-part2.md)
-	* [Lab Part 3: Azure Functions optimieren](lab1-part3.md)
-	* [Lab Part 4: Azure Functions in Azure deployen](lab1-part4.md)
-	* [Lab Part 5: Azure Functions absichern](lab1-part5.md)
-
-
 ## Lab Part 2: Azure Functions einführen
+
+![part2.png](images/part2.png)
+
 In diesem Teil wird eine Azure Functions App angelegt und die Berechnungslogik für die Bilder dorthin verlagert. 
 Wir benötigen eine Function zum Upload des Bildes, sowie eine weitere zum Abrufen der berechneten Bilder. 
 
@@ -318,4 +311,5 @@ Mit Hilfe des Storage Explorers kann man sich die Daten nach einem Upload anscha
 
 Das Zeitverhalten hat sich jedoch nicht geändert, da die Berechnungslogik lediglich in die Function verschoben, aber nicht grundsätzlich geändert wurde. Dies ist Teil des nächsten Abschnitts.
 
-
+---
+[« Zurück](lab1-part1.md) | [Inhalte](lab1.md#lab-inhalte) | [Weiter »](lab1-part3.md)

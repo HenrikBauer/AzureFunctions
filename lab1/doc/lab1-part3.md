@@ -1,17 +1,8 @@
 # Azure Functions Lab 
 
-## Inhaltsverzeichnis
-* [Lab-Übersicht](lab1.md)
-	* [Installation](lab1-installation.md)
-	* [Lab Part 1: Code bereitstellen](lab1-part1.md)
-	* [Lab Part 2: Azure Functions einführen](lab1-part2.md)
-	* [Lab Part 3: Azure Functions optimieren](lab1-part3.md)
-	* [Lab Part 4: Azure Functions in Azure deployen](lab1-part4.md)
-	* [Lab Part 5: Azure Functions absichern](lab1-part5.md)
-
-
-
 ## Lab Part 3: Azure Functions optimieren
+
+![part3.png](images/part3.png)
 
 In diesem Teil wird die Verarbeitung durch weitere Functions entkoppelt und parallelisiert:
 * Die Bilder werden nicht mehr beim Upload berechnet; stattdessen wird ein Eintrag in einer Message Queue je Bildberechnung angelegt.
@@ -157,3 +148,5 @@ Ein erneuter Test der die Anwendung zeigt:
 
 Hinweis: Beim allerersten Mal dauert es einen Moment, bis die Queue-Verarbeitung startet.
 
+---
+[« Zurück](lab1-part2.md) | [Inhalte](lab1.md#lab-inhalte) | [Weiter »](lab1-part4.md)
