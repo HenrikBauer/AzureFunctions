@@ -91,7 +91,10 @@ using SDX.FunctionsDemo.ImageProcessing;
 ```
 
 
-Die Function-Methode ist anzupassen. Der gesamte Funktionsrumpf kann gelöscht werden. Der Parameter mit dem Attribut `QueueTrigger` ist als `string` deklariert. Da es sich in der Message um JSON handelt, können wir direkt den neuen Typ `ProcessImageMessage` angeben. Außerdem muss der `ExecutionContext` wieder ergänzt werden:
+Die Function-Methode ist anzupassen. Der gesamte Funktionsrumpf kann gelöscht werden. 
+Der Parameter mit dem Attribut `QueueTrigger` ist als `string` deklariert; da es sich in der Message um JSON handelt, können wir direkt den neuen Typ `ProcessImageMessage` angeben. 
+Außerdem muss der `ExecutionContext` wieder ergänzt werden.
+Schließlich sollte die Methode als `async` gekennzeichnet werden:
 
 ```CSharp
 [FunctionName("ProcessImage")]
